@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+        <!-- 밑의 letterStyle과 같은 부분
+        <style>
+            .letter {
+                padding : 10px;
+                margin : 10px;
+                background-color: violet;
+                color : #ABCDEF;
+                display : inline-block;
+                font-family: monospace;
+                font-size: 28px;
+                text-align: center;
+            }
+        </style>
+        -->
+    </head>
+
+    <body>
+        <div id = 'container'>
+            
+        </div>
+        <script type = 'text/babel'>
+            class Letter extends React.Component {
+                render() {
+                    let letterStyle = {
+                        padding : 10,
+                        margin : 10,
+                        backgroundColor: this.props.color,
+                        color : '#ABCDEF',
+                        display : 'inline-block',
+                        fontFamily: 'monospace',
+                        fontSize: 28,
+                        textAlign: 'center'
+                    };
+                    // return이 multi line이면 ()로 묶는다. 
+                    return (
+                        <div style = {letterStyle}>
+                            {this.props.children}
+                        </div>
+                    );
+                }
+            }
+
+            let destination = document.querySelector('#container');
+            ReactDOM.render(
+                <div>
+                    <Letter color = 'red'>A</Letter>
+                    <Letter color = 'blue'>E</Letter>
+                    <Letter color = 'green'>I</Letter>
+                    <Letter color = 'yellow'>O</Letter>
+                    <Letter color = 'orange'>U</Letter>
+                </div>, destination
+            );
+        </script>
+    </body>
+</html>
